@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration de l'API Apps Script ---
     // !!! TRÈS IMPORTANT : REMPLACEZ CETTE URL par l'URL de votre déploiement Apps Script !!!
     // Exemple : 'https://script.google.com/macros/s/AKfycbu_VotreIdentifiantUniqueAppsScript/exec'
-    const APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyaJuvv_bJTdaP_FkyUEJoreokL3KKi3iR4NzVpDQcDyP8hCBmGoIgiXRh5WfmU5J87GA/exec'; // <<< À MODIFIER !
+    const APPS_SCRIPT_WEB_APP_URL = 'https://menage2.jassairbus.workers.dev'; // <<< À MODIFIER !
 
     // --- Fonctions d'interaction avec l'Apps Script ---
     async function fetchFromAppsScript(path, options = {}) {
