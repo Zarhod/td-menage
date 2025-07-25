@@ -167,7 +167,7 @@ function App() {
     return (
         <div className="container">
             <header className="app-header">
-                {/* CHEMIN DU LOGO : Assurez-vous que logo.png est dans le même dossier que ce fichier */}
+                {/* CHEMIN DU LOGO : Assurez-vous que logo.png est dans le même dossier que index.html */}
                 <img src="logo.png" alt="Logo Maison Propre" className="app-logo" />
                 <h1>Maison Propre</h1>
                 <p>Gérez les tâches ménagères et suivez les scores de l'équipe.</p>
@@ -207,8 +207,8 @@ function App() {
                         <div className="task-list">
                             {completedTasks.map(task => (
                                 <div key={task.ID} className="card completed-task-card">
-                                    <h4>{task.Tâche}</h4>
-                                    <p>Par: <strong>{task.Responsable}</strong> le {task['Dernière Exécution']}</p>
+                                    <h4>{task.Tâche}</h4> {/* Intitulé de la tâche */}
+                                    <p>Par **{task.Responsable}** le {task['Dernière Exécution']}</p> {/* Nom et date */}
                                 </div>
                             ))}
                         </div>
