@@ -1,0 +1,337 @@
+/* Importation de Google Fonts pour une meilleure typographie */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Base & Layout */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0f2f7, #c6e2ff); /* Dégradé de bleu doux et moderne */
+    color: #333333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: flex-start; /* Aligne le contenu en haut pour éviter de "flotter" */
+    padding-top: 30px; /* Espace du haut de page */
+    box-sizing: border-box; /* Assure que padding est inclus dans la hauteur */
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px; /* Largeur maximale augmentée pour plus d'espace */
+    margin: 0 auto 30px auto; /* Centre et donne de la marge en bas */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px; /* Arrondis plus prononcés */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Ombre plus moderne */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 35px;
+}
+
+.app-logo {
+    display: block; /* Essentiel pour le centrage avec margin: auto */
+    max-width: 150px; /* Taille du logo (ajustez si besoin) */
+    height: auto;
+    margin: 0 auto 20px auto; /* Centré, avec marge en bas */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); /* Ombre douce sur le logo */
+}
+
+.app-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c3e50;
+    font-size: 2.8em; /* Plus grand titre */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.app-header p {
+    color: #666666;
+    font-size: 1.15em;
+    max-width: 600px; /* Limite la largeur du paragraphe de description */
+    margin: 0 auto; /* Centre le paragraphe */
+}
+
+/* Sections */
+.content-sections {
+    display: grid; /* Utilisation de Grid pour un contrôle précis */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 ou 3 colonnes adaptatives */
+    gap: 30px; /* Espace plus grand entre les sections */
+    justify-content: center; /* Centre les sections dans le conteneur */
+    align-items: start; /* Aligne les sections en haut */
+}
+
+.section {
+    padding: 25px;
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    border: 1px solid #eef;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    display: flex; /* Utilise flexbox pour le contenu de la section */
+    flex-direction: column;
+}
+
+.section h2 {
+    font-family: 'Lato', sans-serif;
+    color: #34495e;
+    font-size: 2em; /* Titres de section plus grands */
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a9d9e6;
+    padding-bottom: 10px;
+    text-align: center; /* Centre les titres de section */
+}
+
+/* Cards (General) */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px; /* Arrondis un peu plus */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 20px; /* Plus d'espace entre les cartes */
+    border: 1px solid #e5e5e5;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    display: flex; /* Utilise flexbox pour le contenu de la carte */
+    flex-direction: column;
+    height: 100%; /* Important pour que les cartes aient la même hauteur dans la grille/flex */
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Effet de soulèvement plus prononcé */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Task Cards */
+.task-card h3 {
+    margin: 0 0 10px 0;
+    color: #333333;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.task-card .task-details p {
+    margin: 5px 0;
+    color: #555555;
+    font-size: 0.95em;
+}
+
+/* Task Assign Section (Animation) */
+.task-assign-section {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-out, max-height 0.4s ease-out, margin-top 0.4s ease-out;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+}
+
+.task-assign-section.show {
+    opacity: 1;
+    max-height: 100px; /* Assez grand pour contenir les éléments */
+    margin-top: 15px; /* Espace après les détails de la tâche */
+}
+
+.task-assign-section select,
+.task-assign-section button {
+    padding: 10px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 1em;
+    flex-grow: 1;
+    min-width: 140px;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.task-assign-section button {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.task-assign-section button:hover {
+    background-color: #45a049;
+}
+
+.task-assign-section button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.show-assign-button {
+    background-color: #007bff;
+    margin-top: auto; /* Pousse le bouton vers le bas de la carte */
+}
+
+.show-assign-button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-assign-button {
+    background-color: #dc3545;
+}
+
+.cancel-assign-button:hover {
+    background-color: #c82333;
+}
+
+/* Score Cards */
+.score-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: #f0f8ff; /* Un bleu très pâle */
+    border: 1px solid #e0f0ff;
+}
+
+.score-card:first-child {
+    background-color: #ffeb3b; /* Jaune vif pour le premier */
+    font-weight: bold;
+    border-color: #ffd700;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.score-card span {
+    color: #333333;
+    font-size: 1.1em;
+}
+
+.score-card .score-value {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.3em; /* Plus grand score */
+}
+
+/* Completed Tasks */
+.completed-tasks-section h2 {
+    border-bottom: 2px solid #b3e0cf;
+}
+
+.completed-task-card {
+    background-color: #e6f7f2;
+    border: 1px solid #d0ebe3;
+    box-shadow: none;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    height: auto;
+}
+
+.completed-task-card:hover {
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+}
+
+.completed-task-card h4 {
+    margin: 0;
+    color: #4CAF50;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.completed-task-card p {
+    margin: 0;
+    color: #666666;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* Footer */
+.app-footer {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px; /* Plus d'espace avant le footer */
+    color: #888888;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 20px;
+    }
+    .container {
+        margin: 0 auto 20px auto;
+        padding: 20px;
+    }
+
+    .content-sections {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+        gap: 25px;
+    }
+
+    .app-header h1 {
+        font-size: 2.2em;
+    }
+
+    .section h2 {
+        font-size: 1.7em;
+    }
+
+    .task-card, .score-card {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 15px;
+    }
+    .container {
+        margin: 0 auto 15px auto;
+        padding: 15px;
+    }
+
+    .app-header h1 {
+        font-size: 1.8em;
+    }
+
+    .app-header p {
+        font-size: 1em;
+    }
+
+    .section h2 {
+        font-size: 1.4em;
+    }
+
+    .task-assign-section {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .task-assign-section select,
+    .task-assign-section button {
+        width: 100%;
+        min-width: unset;
+    }
+}
