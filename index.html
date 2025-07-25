@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ménage Danu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Ménage & Co - Ton Assistant de Tâches</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="root"></div>
+    <header>
+        <h1>Ménage & Co</h1>
+        <p>Organisons ensemble les tâches ménagères !</p>
+    </header>
 
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <main>
+        <section id="tasks-selection">
+            <h2>Choix des Tâches</h2>
+            <div id="tasks-list">
+                <p>Chargement des tâches...</p>
+            </div>
+            <button id="signup-button" disabled>S'inscrire à la tâche sélectionnée</button>
+        </section>
+
+        <section id="ranking">
+            <h2>Classement Général</h2>
+            <div id="podium">
+                </div>
+            <ol id="general-ranking">
+                </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ménage & Co. Tous droits réservés.</p>
+    </footer>
+
+    <div id="employee-dialog" class="dialog">
+        <div class="dialog-content">
+            <h3>Nom de l'Employé</h3>
+            <input type="text" id="employee-name-input" placeholder="Entrez votre nom">
+            <button id="submit-name-button">Valider</button>
+            <button id="cancel-name-button">Annuler</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
