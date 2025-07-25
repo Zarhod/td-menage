@@ -140,7 +140,7 @@ function App() {
             console.error('App: Erreur lors de la récupération des données:', err);
             setError(err.message);
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     }, []);
 
