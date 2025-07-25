@@ -1,112 +1,240 @@
+/* Variables CSS pour un thème facile à personnaliser */
 :root {
-    --primary-color: #4CAF50; /* Vert */
-    --secondary-color: #FFC107; /* Jaune/Or pour le podium */
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --card-background: #fff;
-    --border-radius: 8px;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-color: #3f51b5; /* Bleu Indigo */
+    --secondary-color: #5c6bc0; /* Bleu Indigo clair */
+    --accent-color: #ffc107; /* Jaune vif pour l'accent et le podium */
+    --text-dark: #263238; /* Gris très foncé */
+    --text-light: #eceff1; /* Gris très clair */
+    --bg-light: #f5f8fa; /* Arrière-plan subtil */
+    --card-bg: #ffffff;
+    --border-radius-lg: 15px;
+    --border-radius-sm: 8px;
+    --shadow-soft: 0 6px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --spacing-xs: 10px;
+    --spacing-sm: 15px;
+    --spacing-md: 25px;
+    --spacing-lg: 40px;
 }
 
+/* Base et typographie */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: var(--shadow);
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
-h1, h2 {
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+h1 { font-size: 2.8rem; text-align: center; margin-bottom: var(--spacing-xs); }
+h1 .fas { margin-right: var(--spacing-sm); color: var(--accent-color); }
+h2 { font-size: 2.2rem; margin-bottom: var(--spacing-md); text-align: center; }
+h2 .fas { margin-right: var(--spacing-xs); color: var(--accent-color); }
+h3 { font-size: 1.6rem; margin-bottom: var(--spacing-sm); }
+
+/* En-tête de l'application */
+.app-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--text-light);
+    padding: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-soft);
     text-align: center;
-    margin-bottom: 1.5rem;
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    overflow: hidden; /* Pour les éventuels éléments de design */
+}
+.app-header::before { /* Petit effet visuel */
+    content: '';
+    position: absolute;
+    top: -50px; left: -50px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    transform: rotate(45deg);
 }
 
+.app-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+/* Sections principales (cartes) */
 main {
-    padding: 20px;
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: var(--card-background);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    flex-grow: 1;
+    padding-bottom: var(--spacing-lg);
 }
 
-section {
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
+.card {
+    background-color: var(--card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: var(--spacing-lg);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Section des tâches */
-#tasks-list {
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Animations d'apparition */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s forwards;
+}
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+#ranking-section { animation-delay: 0.2s; } /* Décaler l'apparition du classement */
+
+/* Messages (chargement, erreur) */
+.message {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: var(--spacing-sm) 0;
+}
+.loading-message .fas { margin-right: var(--spacing-xs); color: var(--primary-color); }
+.error-message {
+    color: #d32f2f; /* Rouge pour les erreurs */
+    font-weight: 600;
+}
+
+
+/* Boutons */
+.btn {
+    display: flex; /* Utilise flexbox pour centrer le texte et l'icône */
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    gap: var(--spacing-xs); /* Espace entre l'icône et le texte */
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.3); /* Ombre colorée */
+}
+/* Définir une variable RGB pour l'ombre si nécessaire, sinon utiliser des valeurs directes */
+:root {
+    --primary-color-rgb: 63, 81, 181; /* RGB de #3f51b5 */
+}
+
+
+.btn.primary-btn:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.btn:disabled {
+    background-color: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Grille des tâches */
+.tasks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
 
 .task-item {
-    background-color: var(--card-background);
-    border: 1px solid #eee;
-    padding: 15px;
-    border-radius: var(--border-radius);
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    border: 3px solid transparent;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    position: relative; /* Pour le badge de sélection */
 }
 
 .task-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .task-item.selected {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--primary-color), var(--shadow);
+    background-color: lighten(var(--primary-color), 50%); /* Un bleu très clair */
+    box-shadow: 0 0 0 4px var(--primary-color), var(--shadow-soft);
+    transform: translateY(-2px);
+}
+.task-item.selected::after { /* Badge de sélection */
+    content: '\f00c'; /* Icône de coche Font Awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
 }
 
+/* Pseudo-fonction lighten si non supporté (Sass le gère) */
+/* Pour CSS pur, on peut faire ça avec HSL ou juste choisir une couleur plus claire */
+/* background-color: hsl(231, 56%, 90%); (pour lighten(var(--primary-color), 50%)) */
+
+
 .task-item h3 {
-    margin-top: 0;
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
     color: var(--primary-color);
+    font-size: 1.4rem;
 }
 
 .task-item p {
-    font-size: 0.9em;
-    color: #666;
+    font-size: 1rem;
+    color: #555;
 }
 
-button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-button:hover:not(:disabled) {
-    background-color: #388E3C; /* Vert plus foncé */
-}
-
-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-/* Boîte de dialogue */
-.dialog {
+/* Modale (boîte de dialogue) */
+.modal {
     display: none; /* Masqué par défaut */
     position: fixed;
     z-index: 1000;
@@ -114,150 +242,233 @@ button:disabled {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.5); /* Fond semi-transparent */
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
 }
 
-.dialog-content {
-    background-color: var(--card-background);
-    margin: auto;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    max-width: 400px;
+.modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+    display: flex; /* On le rend flex quand il est ouvert */
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-hover);
+    max-width: 500px;
+    width: 90%;
     text-align: center;
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+/* Animation d'apparition de la modale */
+.modal.is-open .modal-content {
+    transform: translateY(0);
 }
 
-.dialog-content h3 {
+.close-button {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
     color: var(--primary-color);
-    margin-bottom: 20px;
 }
 
 #employee-name-input {
     width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: var(--spacing-md);
     border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    font-size: 1em;
+    border-radius: var(--border-radius-sm);
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
-
-#employee-dialog button {
-    margin: 5px;
-    width: 45%;
-}
-
-#cancel-name-button {
-    background-color: #f44336; /* Rouge */
-}
-
-#cancel-name-button:hover {
-    background-color: #d32f2f;
+#employee-name-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
 
-/* Classement */
-#ranking {
-    text-align: center;
-}
-
-#podium {
+/* Classement et podium */
+.podium-display {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 200px;
-    margin-bottom: 30px;
+    height: 250px;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
 }
 
 .podium-step {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: 2px solid #ccc;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 10px;
-    font-weight: bold;
-    font-size: 1.1em;
-    box-shadow: var(--shadow);
-    padding-top: 10px;
+    width: 130px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    padding-top: var(--spacing-sm);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    border: 3px solid rgba(255,255,255,0.7);
+    transition: all 0.3s ease-in-out;
+}
+.podium-step:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
 }
 
-.podium-step.gold { height: 180px; width: 100px; background-color: #FFD700; border-color: #DAA520; } /* Or */
-.podium-step.silver { height: 140px; width: 100px; background-color: #C0C0C0; border-color: #A9A9A9; } /* Argent */
-.podium-step.bronze { height: 100px; width: 100px; background-color: #CD7F32; border-color: #8B4513; } /* Bronze */
+
+.podium-step.gold {
+    height: 200px;
+    background-color: #FFD700; /* Or pur */
+    border-color: #DAA520;
+    z-index: 2;
+    transform: translateY(-20px);
+}
+
+.podium-step.silver {
+    height: 160px;
+    background-color: #C0C0C0; /* Argent */
+    border-color: #A9A9A9;
+    z-index: 1;
+}
+
+.podium-step.bronze {
+    height: 120px;
+    background-color: #CD7F32; /* Bronze */
+    border-color: #8B4513;
+    z-index: 1;
+}
 
 .podium-rank {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .podium-name {
-    padding: 5px 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 5px 10px;
     text-align: center;
     width: 100%;
+    background-color: rgba(255,255,255,0.3);
+    box-sizing: border-box;
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 
-#general-ranking {
+.podium-score {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+    background-color: rgba(255,255,255,0.3);
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.ranking-list {
     list-style: none;
     padding: 0;
-    text-align: left;
-    max-width: 500px;
+    max-width: 650px;
     margin: 0 auto;
 }
 
-#general-ranking li {
-    background-color: var(--card-background);
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    border-radius: var(--border-radius);
+.ranking-list li {
+    background-color: var(--bg-light);
+    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    font-weight: 600;
+    transition: transform 0.2s ease;
 }
 
-#general-ranking li span:first-child {
-    font-weight: bold;
+.ranking-list li:hover {
+    transform: translateX(5px);
+}
+
+.ranking-list li span:first-child {
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
 }
-
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-    color: #666;
+.ranking-list li span:first-child .rank-icon {
     font-size: 0.9em;
+    margin-right: var(--spacing-xs);
+    color: var(--accent-color);
 }
 
-/* Media Queries pour la responsivité */
+
+/* Pied de page */
+.app-footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: auto;
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-lg);
+}
+
+/* Responsivité pour les mobiles et tablettes */
 @media (max-width: 768px) {
-    main {
-        margin: 10px;
-        padding: 15px;
-    }
-
-    #tasks-list {
-        grid-template-columns: 1fr;
-    }
-
-    .dialog-content {
-        max-width: 90%;
-        padding: 20px;
-    }
-
-    #employee-dialog button {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    .podium-step {
-        width: 80px;
-        margin: 0 5px;
-    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+    .app-header { padding: var(--spacing-md) 0; }
+    .card { padding: var(--spacing-md); margin-bottom: var(--spacing-md); }
+    .tasks-grid { grid-template-columns: 1fr; gap: var(--spacing-sm); }
+    .task-item { padding: var(--spacing-sm); }
+    .btn { padding: 12px 20px; font-size: 1rem; }
+    .podium-display { height: 200px; gap: 10px; }
+    .podium-step { width: 100px; }
+    .podium-step.gold { height: 160px; }
+    .podium-step.silver { height: 130px; }
+    .podium-step.bronze { height: 100px; }
+    .podium-rank { font-size: 2.8rem; }
+    .podium-name { font-size: 1.1rem; }
+    .modal-content { padding: var(--spacing-md); }
+    .close-button { font-size: 1.8rem; }
 }
+
+@media (max-width: 480px) {
+    .container { padding: 0 var(--spacing-sm); }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    .btn { font-size: 0.95rem; padding: 10px 15px; }
+    .podium-display { height: 160px; gap: 8px; }
+    .podium-step { width: 80px; }
+    .podium-step.gold { height: 130px; }
+    .podium-step.silver { height: 110px; }
+    .podium-step.bronze { height: 90px; }
+    .podium-rank { font-size: 2.2rem; }
+    .podium-name { font-size: 0.95rem; }
+    .modal-content { padding: var(--spacing-sm); }
+}
+
+/* Helper pour la pseudo-fonction lighten si besoin (à utiliser avec parcimonie ou un préprocesseur) */
+/* .lighten-50-primary { background-color: hsl(231, 56%, 90%); } */
