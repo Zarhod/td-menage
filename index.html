@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ménage & Co - Ton Assistant de Tâches</title>
+    <title>Ménage & Co – L'App des Tâches Fun !</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Ménage & Co</h1>
-        <p>Organisons ensemble les tâches ménagères !</p>
+    <header class="app-header">
+        <div class="container">
+            <h1><i class="fas fa-broom"></i> Ménage & Co</h1>
+            <p>Faites briller nos espaces et gagnez des points !</p>
+        </div>
     </header>
 
-    <main>
-        <section id="tasks-selection">
-            <h2>Choix des Tâches</h2>
-            <div id="tasks-list">
-                <p>Chargement des tâches...</p>
+    <main class="container">
+        <section id="tasks-section" class="card fade-in">
+            <h2><i class="fas fa-list-check"></i> Choisissez votre mission</h2>
+            <div id="tasks-list" class="tasks-grid">
+                <p class="message loading-message"><i class="fas fa-spinner fa-spin"></i> Chargement des missions...</p>
             </div>
-            <button id="signup-button" disabled>S'inscrire à la tâche sélectionnée</button>
+            <button id="signup-button" class="btn primary-btn" disabled>
+                <i class="fas fa-user-plus"></i> Je m'inscris à cette tâche !
+            </button>
         </section>
 
-        <section id="ranking">
-            <h2>Classement Général</h2>
-            <div id="podium">
-                </div>
-            <ol id="general-ranking">
+        <section id="ranking-section" class="card fade-in">
+            <h2><i class="fas fa-trophy"></i> Tableau des Super-Héros du Nettoyage</h2>
+            <div id="podium" class="podium-display">
+                <p class="message loading-message"><i class="fas fa-spinner fa-spin"></i> Calcul du classement...</p>
+            </div>
+            <h3>Classement détaillé</h3>
+            <ol id="general-ranking-list" class="ranking-list">
                 </ol>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Ménage & Co. Tous droits réservés.</p>
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2025 Ménage & Co. Tous droits réservés.</p>
+        </div>
     </footer>
 
-    <div id="employee-dialog" class="dialog">
-        <div class="dialog-content">
-            <h3>Nom de l'Employé</h3>
-            <input type="text" id="employee-name-input" placeholder="Entrez votre nom">
-            <button id="submit-name-button">Valider</button>
-            <button id="cancel-name-button">Annuler</button>
+    <div id="employee-modal" class="modal">
+        <div class="modal-content scale-in">
+            <span class="close-button" title="Fermer">&times;</span>
+            <h3>Qui est le champion ?</h3>
+            <p>Entrez votre nom pour valider votre participation.</p>
+            <input type="text" id="employee-name-input" placeholder="Votre prénom" required autocomplete="name">
+            <button id="submit-name-button" class="btn primary-btn">
+                <i class="fas fa-check-circle"></i> Valider mon inscription
+            </button>
         </div>
     </div>
 
