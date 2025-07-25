@@ -1,341 +1,263 @@
-/* Importation de Google Fonts pour une meilleure typographie */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+:root {
+    --primary-color: #4CAF50; /* Vert */
+    --secondary-color: #FFC107; /* Jaune/Or pour le podium */
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #fff;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-/* Base & Layout */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #e0f2f7, #c6e2ff); /* Dégradé de bleu doux et moderne */
-    color: #333333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    align-items: flex-start; /* Aligne le contenu en haut pour éviter de "flotter" */
-    padding-top: 30px; /* Espace du haut de page */
-    box-sizing: border-box; /* Assure que padding est inclus dans la hauteur */
 }
 
-.container {
-    width: 100%;
-    max-width: 1000px; /* Largeur maximale augmentée pour plus d'espace */
-    margin: 0 auto 30px auto; /* Centre et donne de la marge en bas */
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 15px; /* Arrondis plus prononcés */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Ombre plus moderne */
-    box-sizing: border-box; /* Inclut le padding dans la largeur */
-}
-
-/* Header */
-.app-header {
-    text-align: center;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 35px;
-}
-
-.app-logo {
-    display: block; /* Essentiel pour le centrage avec margin: auto */
-    max-width: 150px; /* Taille du logo (ajustez si besoin) */
-    height: auto;
-    margin: 0 auto 20px auto; /* Centré, avec marge en bas */
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); /* Ombre douce sur le logo */
-}
-
-.app-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    color: #2c3e50;
-    font-size: 2.8em; /* Plus grand titre */
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.app-header p {
-    color: #666666;
-    font-size: 1.15em;
-    max-width: 600px; /* Limite la largeur du paragraphe de description */
-    margin: 0 auto; /* Centre le paragraphe */
-}
-
-/* Sections */
-.content-sections {
-    display: grid; /* Utilisation de Grid pour un contrôle précis */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 ou 3 colonnes adaptatives */
-    gap: 30px; /* Espace plus grand entre les sections */
-    justify-content: center; /* Centre les sections dans le conteneur */
-    align-items: start; /* Aligne les sections en haut */
-}
-
-.section {
-    padding: 25px;
-    background-color: #fdfdfd;
-    border-radius: 12px;
-    border: 1px solid #eef;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    display: flex; /* Utilise flexbox pour le contenu de la section */
-    flex-direction: column;
-}
-
-.section h2 {
-    font-family: 'Lato', sans-serif;
-    color: #34495e;
-    font-size: 2em; /* Titres de section plus grands */
-    margin-top: 0;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #a9d9e6;
-    padding-bottom: 10px;
-    text-align: center; /* Centre les titres de section */
-}
-
-/* Cards (General) */
-.card {
-    background-color: #ffffff;
-    border-radius: 10px; /* Arrondis un peu plus */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    margin-bottom: 20px; /* Plus d'espace entre les cartes */
-    border: 1px solid #e5e5e5;
-    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-    display: flex; /* Utilise flexbox pour le contenu de la carte */
-    flex-direction: column;
-    height: 100%; /* Important pour que les cartes aient la même hauteur dans la grille/flex */
-    box-sizing: border-box;
-}
-
-.card:hover {
-    transform: translateY(-5px); /* Effet de soulèvement plus prononcé */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Task Cards */
-.task-card h3 {
-    margin: 0 0 10px 0;
-    color: #333333;
-    font-size: 1.3em;
-    font-weight: 600;
-}
-
-.task-card .task-details p {
-    margin: 5px 0;
-    color: #555555;
-    font-size: 0.95em;
-}
-
-/* Task Assign Section (Animation) */
-.task-assign-section {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.4s ease-out, max-height 0.4s ease-out, margin-top 0.4s ease-out;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    margin-top: 0;
-}
-
-.task-assign-section.show {
-    opacity: 1;
-    max-height: 100px; /* Assez grand pour contenir les éléments */
-    margin-top: 15px; /* Espace après les détails de la tâche */
-}
-
-.task-assign-section select,
-.task-assign-section button {
-    padding: 10px 15px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 1em;
-    flex-grow: 1;
-    min-width: 140px;
-    background-color: #f8f8f8;
-    color: #333;
-    transition: all 0.2s ease;
-}
-
-.task-assign-section button {
-    background-color: #4CAF50;
+header {
+    background-color: var(--primary-color);
     color: white;
-    font-weight: bold;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+/* Section des tâches */
+#tasks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.task-item {
+    background-color: var(--card-background);
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: var(--border-radius);
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.task-assign-section button:hover {
-    background-color: #45a049;
+.task-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
-.task-assign-section button:disabled {
+.task-item.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-color), var(--shadow);
+}
+
+.task-item h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.task-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+    background-color: #388E3C; /* Vert plus foncé */
+}
+
+button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
-    opacity: 0.7;
 }
 
-.show-assign-button {
-    background-color: #007bff;
-    margin-top: auto; /* Pousse le bouton vers le bas de la carte */
+/* Boîte de dialogue */
+.dialog {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Fond semi-transparent */
+    justify-content: center;
+    align-items: center;
 }
 
-.show-assign-button:hover {
-    background-color: #0056b3;
+.dialog-content {
+    background-color: var(--card-background);
+    margin: auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    text-align: center;
 }
 
-.cancel-assign-button {
-    background-color: #dc3545;
+.dialog-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
-.cancel-assign-button:hover {
-    background-color: #c82333;
+#employee-name-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1em;
 }
 
-/* Score Cards */
-.score-card {
+#employee-dialog button {
+    margin: 5px;
+    width: 45%;
+}
+
+#cancel-name-button {
+    background-color: #f44336; /* Rouge */
+}
+
+#cancel-name-button:hover {
+    background-color: #d32f2f;
+}
+
+
+/* Classement */
+#ranking {
+    text-align: center;
+}
+
+#podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
+.podium-step {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: var(--shadow);
+    padding-top: 10px;
+}
+
+.podium-step.gold { height: 180px; width: 100px; background-color: #FFD700; border-color: #DAA520; } /* Or */
+.podium-step.silver { height: 140px; width: 100px; background-color: #C0C0C0; border-color: #A9A9A9; } /* Argent */
+.podium-step.bronze { height: 100px; width: 100px; background-color: #CD7F32; border-color: #8B4513; } /* Bronze */
+
+.podium-rank {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.podium-name {
+    padding: 5px 0;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+#general-ranking {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#general-ranking li {
+    background-color: var(--card-background);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    background-color: #f0f8ff; /* Un bleu très pâle */
-    border: 1px solid #e0f0ff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
-.score-card:first-child {
-    background-color: #ffeb3b; /* Jaune vif pour le premier */
+#general-ranking li span:first-child {
     font-weight: bold;
-    border-color: #ffd700;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    color: var(--primary-color);
 }
 
-.score-card span {
-    color: #333333;
-    font-size: 1.1em;
-}
-
-.score-card .score-value {
-    color: #007bff;
-    font-weight: bold;
-    font-size: 1.3em; /* Plus grand score */
-}
-
-/* Completed Tasks */
-.completed-tasks-section h2 {
-    border-bottom: 2px solid #b3e0cf;
-}
-
-.completed-task-card {
-    background-color: #e6f7f2;
-    border: 1px solid #d0ebe3;
-    box-shadow: none;
-    padding: 8px 12px; /* Rendu plus compact */
-    margin-bottom: 8px;
-    opacity: 0.95; /* Légèrement plus opaque */
-    transition: opacity 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    height: auto;
-}
-
-.completed-task-card:hover {
-    transform: none;
-    box-shadow: none;
-    opacity: 1;
-}
-
-.completed-task-card h4 {
-    margin: 0;
-    color: #4CAF50;
-    font-size: 0.95em; /* Taille de police légèrement réduite */
-    font-weight: 600;
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    overflow: hidden; /* Cache le texte qui dépasse */
-    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
-    width: 100%; /* S'assure qu'il prend toute la largeur disponible */
-    line-height: 1.3em; /* Aide à la compacité */
-}
-
-.completed-task-card p {
-    margin: 0;
-    color: #666666;
-    font-size: 0.8em; /* Taille de police plus petite */
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    overflow: hidden; /* Cache le texte qui dépasse */
-    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
-    width: 100%;
-    line-height: 1.2em; /* Aide à la compacité */
-    padding-top: 2px; /* Petit espacement entre titre et info */
-}
-
-/* Footer */
-.app-footer {
+footer {
     text-align: center;
-    padding-top: 25px;
-    border-top: 1px solid #e0e0e0;
-    margin-top: 40px; /* Plus d'espace avant le footer */
-    color: #888888;
+    padding: 20px;
+    margin-top: 30px;
+    color: #666;
     font-size: 0.9em;
 }
 
-/* Responsive adjustments */
+/* Media Queries pour la responsivité */
 @media (max-width: 768px) {
-    body {
-        padding-top: 20px;
-    }
-    .container {
-        margin: 0 auto 20px auto;
-        padding: 20px;
-    }
-
-    .content-sections {
-        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
-        gap: 25px;
-    }
-
-    .app-header h1 {
-        font-size: 2.2em;
-    }
-
-    .section h2 {
-        font-size: 1.7em;
-    }
-
-    .task-card, .score-card {
-        padding: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding-top: 15px;
-    }
-    .container {
-        margin: 0 auto 15px auto;
+    main {
+        margin: 10px;
         padding: 15px;
     }
 
-    .app-header h1 {
-        font-size: 1.8em;
+    #tasks-list {
+        grid-template-columns: 1fr;
     }
 
-    .app-header p {
-        font-size: 1em;
+    .dialog-content {
+        max-width: 90%;
+        padding: 20px;
     }
 
-    .section h2 {
-        font-size: 1.4em;
-    }
-
-    .task-assign-section {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .task-assign-section select,
-    .task-assign-section button {
+    #employee-dialog button {
         width: 100%;
-        min-width: unset;
+        margin: 5px 0;
+    }
+
+    .podium-step {
+        width: 80px;
+        margin: 0 5px;
     }
 }
