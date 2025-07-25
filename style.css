@@ -228,9 +228,9 @@ body {
     background-color: #e6f7f2;
     border: 1px solid #d0ebe3;
     box-shadow: none;
-    padding: 10px 12px;
+    padding: 8px 12px; /* Rendu plus compact */
     margin-bottom: 8px;
-    opacity: 0.9;
+    opacity: 0.95; /* Légèrement plus opaque */
     transition: opacity 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -248,21 +248,25 @@ body {
 .completed-task-card h4 {
     margin: 0;
     color: #4CAF50;
-    font-size: 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
+    font-size: 0.95em; /* Taille de police légèrement réduite */
+    font-weight: 600;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    overflow: hidden; /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+    width: 100%; /* S'assure qu'il prend toute la largeur disponible */
+    line-height: 1.3em; /* Aide à la compacité */
 }
 
 .completed-task-card p {
     margin: 0;
     color: #666666;
-    font-size: 0.8em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.8em; /* Taille de police plus petite */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    overflow: hidden; /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
     width: 100%;
+    line-height: 1.2em; /* Aide à la compacité */
+    padding-top: 2px; /* Petit espacement entre titre et info */
 }
 
 /* Footer */
